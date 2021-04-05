@@ -1,25 +1,32 @@
+import React, { Fragment, useEffect, useState } from "react";
 import logo from './logo.svg';
 import './App.css';
 
-function App() {
+function App()
+{
+  const [view, setView] = useState([]);
+  console.log("view is",view)
+
+  useEffect(async () => {
+    const result = await fetch(process.env.REACT_APP_API_KEY);
+    const obj = await result.json();
+    const myData = obj.media.data;
+    setView(myData);
+  }, []);
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <h2>Test</h2>
+        <ul>
+          {view.map((val) => 
+                <img src={val.media_url} />
+          )} 
+      </ul>
       </header>
     </div>
   );
 }
 
 export default App;
+
