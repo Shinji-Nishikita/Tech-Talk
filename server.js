@@ -3,7 +3,7 @@ const express = require("express");
 const cors = require("cors");
 const app = express();
 // const knex = require("./db/knex");
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4000;
 const { GoogleSpreadsheet } = require('google-spreadsheet');
 const credentials = require("./credentials.json")
 
@@ -36,6 +36,12 @@ app.use(cors());
 app.get("/pics", (req, res) =>
 {
     res.send("test");
+})
+
+app.post("/pics", (req, res) =>
+{
+    console.log(req.body.business_discovery.followers_count)
+    res.send(req.body)
 })
 
 // app.use(express.static("./build"));
