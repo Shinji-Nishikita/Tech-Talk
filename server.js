@@ -11,36 +11,51 @@ app.use(express.json());
 app.use(cors());
 
 //google spread sheet
-(async function() {
+// (async function() {
    
-    const doc = new GoogleSpreadsheet(process.env.GOOGLE_SPREAD_SHEET_URL);
+//     const doc = new GoogleSpreadsheet(process.env.GOOGLE_SPREAD_SHEET_URL);
     
-    await doc.useServiceAccountAuth(credentials);
+//     await doc.useServiceAccountAuth(credentials);
     
-    await doc.loadInfo(); // loads document properties and worksheets
+//     await doc.loadInfo(); // loads document properties and worksheets
  
-    // console.log(doc.title)
-    const sheet = doc.sheetsByIndex[0]; 
-    // console.log("sheet is", sheet)
+//     // console.log(doc.title)
+//     const sheet = doc.sheetsByIndex[0]; 
+//     // console.log("sheet is", sheet)
     
-    const rows = await sheet.getRows();
-    // console.log(rows)
-    const eachRow = rows[0]._rawData
-    for (const ele of eachRow)
-    {
-        console.log(ele)
-    }
+//     const rows = await sheet.getRows();
+//     // console.log(rows)
+//     const eachRow = rows[0]._rawData
+//     for (const ele of eachRow)
+//     {
+//         // console.log(ele)
+//     }
    
-}())
+// }())
 
 app.get("/pics", (req, res) =>
 {
     res.send("test");
 })
 
-app.post("/pics", (req, res) =>
+app.post("/pics", async (req, res) =>
 {
-    console.log(req.body.business_discovery.followers_count)
+    const doc = new GoogleSpreadsheet(process.env.GOOGLE_SPREAD_SHEET_URL);
+    await doc.useServiceAccountAuth(credentials);
+    await doc.loadInfo();
+    const sheet = doc.sheetsByIndex[0];
+    console.log("sheet is",sheet)
+    // console.log(req.body)
+    // console.log(req.body.business_discovery.followers_count)
+    // console.log(req.body.business_discovery.media_count)
+    const sundar = sheet.addRow({ フォロワー数: req.body.business_discovery.followers_count, 投稿数: req.body.business_discovery.media_count });
+    const rows = await sheet.getRows();
+    console.log(rows)
+    // const eachRow = rows[0]._rawData
+    // for (const ele of eachRow)
+    // {
+    //     // console.log(ele)
+    // }
     res.send(req.body)
 })
 

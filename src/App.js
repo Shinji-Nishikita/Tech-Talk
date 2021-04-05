@@ -24,13 +24,13 @@ function App()
     async function getInsta()
     {
       const result = await axios.get(process.env.REACT_APP_FOLLOWER_KEY)
-      console.log(result.data)
+      // console.log(result.data)
       setinstaData(result.data)
     }
     getInsta();
   }, []);
 
-  console.log(instaData)
+  // console.log(instaData)
 
   async function handleClick()
   {
@@ -48,15 +48,13 @@ function App()
       // console.log("myData is", myData)
       setView(myData);
 
-      const result2 = await fetch(process.env.REACT_APP_FOLLOWER_KEY);
-      const obj2 = await result2.json();
-      const myfollower = obj2.business_discovery.followers_count
-      // console.log("myfollower is", myfollower)
-      setFollower(myfollower);
+      // const result2 = await fetch(process.env.REACT_APP_FOLLOWER_KEY);
+      // const obj2 = await result2.json();
+      // const myfollower = obj2.business_discovery.followers_count
+      // setFollower(myfollower);
 
-      const crrMediaCount = obj2.business_discovery.media_count
-      // console.log("crrMediaCount is", crrMediaCount)
-      setMediaCount(crrMediaCount)
+      // const crrMediaCount = obj2.business_discovery.media_count
+      // setMediaCount(crrMediaCount)
     })()
 
   }, []);
@@ -64,9 +62,9 @@ function App()
   return (
     <div className="App">
       <header className="App-header">
-        <h2>My Instagram</h2>
-        <p>current follower is {follower}</p>
-        <p>current mediaCount is {mediaCount}</p>
+        <h2 className="myinsta">My Instagram</h2>
+        {/* <p className="follower">{follower}follower</p>
+        <p className="mediacount">{mediaCount}post</p> */}
         <button onClick={handleClick}>post</button>
         <ul className="pictures">
           {view.map((val) => 
