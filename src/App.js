@@ -9,16 +9,6 @@ function App()
   const [mediaCount, setMediaCount] = useState([]);
   const [instaData, setinstaData] = useState([]);
 
-  // async function handleClick() {
-  //   const result = await fetch(process.env.REACT_APP_FOLLOWER_KEY, {
-  //     method: "POST",
-  //     body: JSON.stringify({ name: "test" }),
-  //     headers: {
-  //       "Content-Type": "application/json"
-  //     }
-  //   });
-  //   return result.json();
-  // }
   useEffect(() =>
   {
     async function getInsta()
@@ -32,10 +22,16 @@ function App()
 
   // console.log(instaData)
 
-  async function handleClick()
+  // async function handleClick()
+  // {
+  //   // console.log(instaData)
+  //   await axios.post("/infos", instaData)
+  // }
+
+  async function handleClick2()
   {
     console.log(instaData)
-    await axios.post("/pics", instaData)
+    await axios.post("/counts", instaData)
   }
   
 
@@ -45,16 +41,7 @@ function App()
       const result = await fetch(process.env.REACT_APP_API_KEY);
       const obj = await result.json();
       const myData = obj.media.data;
-      // console.log("myData is", myData)
       setView(myData);
-
-      // const result2 = await fetch(process.env.REACT_APP_FOLLOWER_KEY);
-      // const obj2 = await result2.json();
-      // const myfollower = obj2.business_discovery.followers_count
-      // setFollower(myfollower);
-
-      // const crrMediaCount = obj2.business_discovery.media_count
-      // setMediaCount(crrMediaCount)
     })()
 
   }, []);
@@ -63,13 +50,12 @@ function App()
     <div className="App">
       <header className="App-header">
         <h2 className="myinsta">My Instagram</h2>
-        {/* <p className="follower">{follower}follower</p>
-        <p className="mediacount">{mediaCount}post</p> */}
-        <button onClick={handleClick}>post</button>
+        {/* <button onClick={handleClick}>push</button> */}
+        <button onClick={handleClick2}>show data</button>
         <ul className="pictures">
-          {view.map((val) => 
-                <img src={val.media_url} />
-          )} 
+          {view.map((val, index) =>
+            <img src={val.media_url} />
+            )} 
       </ul>
       </header>
     </div>
