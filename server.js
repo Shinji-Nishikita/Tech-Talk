@@ -27,11 +27,11 @@ app.post("/counts", async (req, res) =>
     await sheet.getRows();
 
     //フォロワー数、投稿数、投稿タイトル
-    await sheet.addRow({ followers: myData.followers_count, posts: myData.media_count, post_no1: countData[0].caption, post_no2: countData[1].caption, post_no3: countData[2].caption, post_no4: countData[3].caption, post_no5: countData[4].caption, post_no6: countData[5].caption });
+    await sheet.addRow({ followers: myData.followers_count, posts: myData.media_count, post_no1: countData[0].caption, post_no2: countData[1].caption, post_no3: countData[2].caption, post_no4: countData[3].caption, post_no5: countData[4].caption, post_no6: countData[5].caption, post_no7: countData[6].caption, post_no8: countData[7].caption, post_no9: countData[8].caption });
     //いいね数
-    await sheet.addRow({ post_no1: countData[0].like_count, post_no2: countData[1].like_count, post_no3: countData[2].like_count, post_no4: countData[3].like_count, post_no5: countData[4].like_count, post_no6: countData[5].like_count });
+    await sheet.addRow({ post_no1: countData[0].like_count, post_no2: countData[1].like_count, post_no3: countData[2].like_count, post_no4: countData[3].like_count, post_no5: countData[4].like_count, post_no6: countData[5].like_count, post_no7: countData[6].like_count, post_no8: countData[7].like_count, post_no9: countData[8].like_count });
     //コメント数
-    await sheet.addRow({ post_no1: countData[0].comments_count, post_no2: countData[1].comments_count, post_no3: countData[2].comments_count, post_no4: countData[3].comments_count, post_no5: countData[4].comments_count, post_no6: countData[5].comments_count });
+    await sheet.addRow({ post_no1: countData[0].comments_count, post_no2: countData[1].comments_count, post_no3: countData[2].comments_count, post_no4: countData[3].comments_count, post_no5: countData[4].comments_count, post_no6: countData[5].comments_count, post_no7: countData[6].comments_count, post_no8: countData[7].comments_count, post_no9: countData[8].comments_count });
     res.send(req.body)
 })
   

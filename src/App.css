@@ -14,14 +14,20 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background: url("https://i.ibb.co/2dp3hkD/IMG-4456.jpg") no-repeat fixed
+    bottom;
+  background-size: cover;
+  
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: black;
+}
+.App-header-mask{
+  background: rgba(255,255,255,0.5);
 }
 
 .App-link {
@@ -38,8 +44,8 @@
 }
 
 img{
-  height: 300px;
-  width: 350px;
+  height: 400px;
+  width: 450px;
   padding: 1px;
   margin: 1px;
 }
@@ -47,5 +53,15 @@ img{
 .myinsta{
   font-family: 'Brush Script MT';
   font-size: 200%;
+}
+
+.button{
+  appearance: none;
+  border: 0;
+  border-radius: 5px;
+  background: #6a6a68;
+  color: #fff;
+  padding: 8px 16px;
+  font-size: 16px;
 }
 

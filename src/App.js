@@ -38,13 +38,15 @@ function App()
   return (
     <div className="App">
       <header className="App-header">
+        <div className="App-header-mask">
         <h2 className="myinsta">My Instagram</h2>
-        <button onClick={handleClick2}>show data</button>
+        <button className="button" onClick={handleClick2}>show data</button>
         <ul className="pictures">
           {view.map((val) =>
             <img src={val.media_url} />
             )} 
-      </ul>
+          </ul>
+          </div>
       </header>
     </div>
   );
